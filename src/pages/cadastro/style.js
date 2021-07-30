@@ -45,11 +45,13 @@ background-color:violet;
 display: flex;
 align-items: center;
 
+
 `
 export const DivText = styled.div`
 display:flex;
 flex-direction: column;
 margin-left: 20%;
+width: 500px;
 
 h1{
   color: #fff;

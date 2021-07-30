@@ -39,6 +39,7 @@ function App(){
   //  ---------------------------------------
 
   const [infos,setInfos] = useState([])
+
     async function loadInfos(){
       const {data} = await api.get("/url")
       console.log(data.urls);
@@ -47,16 +48,7 @@ function App(){
 
     }
 
-    function golink(loadInfos){
-       const { url,urlHash } = infos;
-       const igual  = urlHash + " "+ url;
-       
-       
-       
-       console.log()
-     console.log(igual)
 
-    }
 
   
     
@@ -88,7 +80,8 @@ function App(){
       </Main>
        {infos.map((info) =>
         <Ul key={info.id}>
-          <li onClick={golink}>{info.urlHash}</li>
+          <li>{info.urlHash}</li>
+         <link to='/redirecao'></link>
         </Ul>
        )}
   

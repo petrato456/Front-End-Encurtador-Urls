@@ -12,7 +12,12 @@ export const Container = styled.div`
   border-radius: 14px;
   margin: 50px auto;
   cursor: default;
-  box-shadow: 3px 3px 3px 3px #B0C4DE;  
+  box-shadow: 3px 3px 3px 3px #B0C4DE; 
+
+  @media(max-width: 800px) {
+   
+   
+ }
   div{
     display: flex;
     align-items: center;

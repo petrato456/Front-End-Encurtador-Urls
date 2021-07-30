@@ -17,11 +17,9 @@ function Home(){
 
   const history = useHistory();
 
-  const token = localStorageGetToken();
+  
 
-  if (token) {
-    history.push('/url');
-  }
+  
 
   const onFormSubmit = async (e) => {
     e.preventDefault();

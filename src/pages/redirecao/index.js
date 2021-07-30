@@ -3,30 +3,33 @@ import {Container} from '../../components/Container'
 import api from '../../service/api'
 
 
-function Hehe(){
-   const [infosRecebida,setInfosRecebida] = useState([])
+function Redirecao(){
+   const [infosRecebida,setInfosRecebida] = useState([""])
 
    useEffect(()=>{
+   
     async function loadInfosrecebida(){
-     
         const response = await api.get('/url');
         console.log(response.data.urls);
+    }
+
+
+
     
-        setInfosRecebida(response.data.urls);}
-        loadInfosrecebida()
+    loadInfosrecebida();
+            
    },[])
+
 
     return(
         
             
         <Container >
-            {infosRecebida.map((info)=>(
-            <h1>{info.urlHash}</h1>
-            ))}
+            
         </Container>
             
         
     )
 }
 
-export default Hehe
+export default Redirecao;

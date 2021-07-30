@@ -23,6 +23,8 @@ display: flex;
  margin-top: 30px;
  display: flex;
  flex-direction: column;
+
+ 
  
  
   input {
@@ -67,18 +69,33 @@ background-color:violet;
 display: flex;
 align-items: center;
 
+
 `
 export const DivText = styled.div`
 display:flex;
 flex-direction: column;
 margin-left: 20%;
+width: 500px;
 
+@media(max-width: 800px) {
+  display :flex ;
+  padding: 20px;
+     font-size: 20px;
+     background-color: red;
+}
 
 h1{
   color: #fff;
   font-size: 70px;
   font-weight: 400;
+  
 }
+@media(max-width: 500px) {
+     h1 {
+       font-size: 40px;
+     background-color: red;
+     }
+     
 p{
   display: flex;
   align-items: center;
@@ -86,7 +103,13 @@ p{
   color:purple;
   font-size: 40px;
   margin-top: 20px;
+  width: 150px;
 }
+
+@media(max-width: 800px) {
+  p{
+     font-size: 20px;
+  }
 h5{
   display: flex;
   align-items: center;
@@ -94,14 +117,21 @@ h5{
   color:purple;
   font-size: 40px;
   margin-top: 40px;
+  width: 150px;
   border: none;
 }
 img{
 
   margin-left: 140px;
-  width: 150px;
   border-radius: 40%;
   margin-top: 40px;
+}
+@media(max-width: 800px) 
+{img {
+     margin-left: 20px;
+     width: 150px;
+
+}
 }
 `
 

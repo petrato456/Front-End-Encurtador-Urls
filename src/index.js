@@ -5,7 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './index.css';
 import Home from './pages/home';
 import App from './pages/Url/App';
-import Hehe from './pages/hehe';
+import Redirecao from './pages/redirecao';
 import Cadastro from './pages/cadastro'
 
 
@@ -14,7 +14,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path='/hehe' exact component={Hehe}/>
+        <Route path='/redirecao' exact component={Redirecao}/>
         <Route path="/cadastro" exact component={Cadastro} />
         <Route path='/url' exact component={App} />
       </Switch>
