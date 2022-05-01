@@ -6,14 +6,13 @@ export default createGlobalStyle`
     margin: 0;
     outline: 0;
     box-sizing: border-box;
+    
   }
   html, body, #root{
     min-height: 100%;
   }
   body{
-    font-family: Arial, Helvetica, sans-serif;
-    /* background-color:#E6E6FA ; */
-    background-color: #fff;
+    font-family: Arial, Helvetica, sans-serif;    
     -webkit-font-smoothing: antialiased;
   }
   :root{

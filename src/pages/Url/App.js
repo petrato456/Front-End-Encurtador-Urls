@@ -1,95 +1,89 @@
-import React, { useState, useEffect } from 'react';
-import {Header, Main, Rodape, Ul, LoginForm } from './style';
-import logo from '../../images/logo192.png';
-import api from '../../service/api';
-import {Redirect, useHistory} from 'react-router-dom'
-import { localStorageGetToken } from '../../service/localStorage';
+import React, { useState } from 'react';
+import { toast } from 'react-toastify'
+import { MdContentCopy } from 'react-icons/md'
+
+import Header from '../../components/Header';
+import UrlComponent from '../../components/UrlComponent'
+import api from '../../service/api'
+
+import * as Styles from './style'
 
 
+function App() {
+  const [infos, setInfos] = useState({ url: '' })
+  const [lastItem, setLastItem] = useState()
 
+  const handleInputChange = (e) => {
+      setInfos({ ...infos, [e.target.name]: e.target.value });
+  }
 
-
-function App(){                       
-    //  Chamada de url---------------------------------------------------------
-    // const history = useHistory();
-    
-   
-    const [infosUrl, setInfosUrl] = useState({
-      url: '',
-    })
-
-    const onFormSubimit = async(e) =>{
+  async function enviaUrl(e) {
+    if (infos === "") {
+      e.preventDefault();
+      toast.error('Digite um link!')
+    }
+    else {
       e.preventDefault();
 
-   try {
-    
-     api.post('/url',infosUrl)
-         
-   } catch (error) {
-     
-   }
-    console.log(infosUrl)
-  }
-    
-  const handleInputChange = (e) => {
-    setInfosUrl({...infosUrl, [e.target.name]: e.target.value });
-  }
-  
+      await api.post('/url', infos).then(() => {
 
-  //  ---------------------------------------
+      }).catch((e) => console.log(e))
+      setTimeout(() => {
 
-  const [infos,setInfos] = useState([])
-
-    async function loadInfos(){
-      const {data} = await api.get("/url")
-      console.log(data.urls);
-  
-      setInfos(data.urls);
-
+        loadInfos()
+      })
     }
+  }
 
+  async function loadInfos() {
 
+    setTimeout(async () => {
+      await api.get("/url").then((res) => {
+        pegaUrl(res.data.urls)
+      }).catch((e) => console.log(e))
+    }, 200)
+  }
 
-  
-    
+  function pegaUrl(newData) {
+
+    if (newData) {
+      const ultimoItem = newData[newData.length - 1]
+      setLastItem(ultimoItem)
+    }
+  }
+
+  const copyText = async (url) => {
+    await navigator.clipboard.writeText(url)
+    toast.success('Copiado com sucesso!')
+  }
+
   return (
-    <div className="App" >
-  
-      <Header > 
-  <img src={logo}/>  
-        <h1>Bem vindo(a)
-          
-        </h1>
-      </Header> 
-      
-      
-      <Main >
-        <h1>Encurtador de links do</h1>
-        <h4>Digite um endereço para guardar na sua agenda</h4>
-        <LoginForm onSubmit={onFormSubimit}>
-        <input 
-        type="text"
-        name="url"
-        placeholder="Ex: ahsahhsahshsaha.com"
-        onChange={handleInputChange}>
-        </input>
-        <button type='submit' onClick={()=>loadInfos()} >Adicionar</button>
-        </LoginForm>
-    
-        <h3>Link encurtado</h3>
-      </Main>
-       {infos.map((info) =>
-        <Ul key={info.id}>
-          <li>{info.urlHash}</li>
-         <link to='/redirecao'></link>
-        </Ul>
-       )}
-  
-      <Rodape>
-          <p>2021</p>
-        </Rodape>
-    </div>
-        );
+    <Styles.WrapperUrl>
+      <Header />
+      <UrlComponent
+        handleChange={handleInputChange}
+        enviaDados={enviaUrl && enviaUrl}
+      />
+      <div className='list'>
+        {lastItem && lastItem &&
+          < React.Fragment key={lastItem.id}>
+            <ul>
+              <li onClick={() => {
+                copyText(`localhost:3006/${lastItem.urlHash}`)
+              }}>
+                {`localhost:3006/${lastItem.urlHash}`}
+                <i>
+                <MdContentCopy/>
+                </i>
+              </li>
+            </ul>
+          </React.Fragment>
+        }
+      </div>
+
+    </Styles.WrapperUrl>
+
+  );
 }
 
 export default App;

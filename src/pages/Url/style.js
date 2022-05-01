@@ -1,121 +1,42 @@
 import styled from 'styled-components';
 
-export const Header = styled.header`
+export const WrapperUrl = styled.div`
+width: 100%;
+height: 58.3vh;
 
- display: flex;
- align-items: center;
- height: 100px;
- border-bottom: 1px solid #eee;
- background-color: violet;
- 
-
- img{
-    width: 60px;
-    margin-left: 10%;
- }
-
- h1{
-    margin-left:50%;
-    color: #fff;
- }
-`
-export const Main = styled.main`
-display:flex;
+display: flex;
 align-items: center;
 flex-direction: column;
-padding: 0;
-margin: 0;
+gap: 90px;
 
-
-h1{
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   height: 125px;
-   width: 600px;
-   border-radius: 5px;
-   margin-top: 20px;
-   font-size: 50px;
-   
-}
-h4{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   width: 600px;
-   height: 50px;
-   
-   margin-top: 10px;
-
-}
-input{
-   border-radius: 5px;
+.list{
    width: 100%;
-   height: 45px;
-   margin-top: 10px;
-   border-color: violet;
+   max-width: 400px;
+   padding-bottom: 60px;
+   padding:0 2.5% 40px 2.5%;
    
-   
-}
-button{
-   width: 10%;
-   height: 40px;
-   border-radius: 5px;
-   background-color: violet;
-   margin-left: ; 
-   color: #fff;
-   border-color: #E6E6FA;
-}
-button:hover {
-    cursor: pointer;
-    background-color: #ff9839
-}
-h3{
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   width: 600px;
-   height: 50px;
-   border-radius: 15%;
-   
-   margin-top: 10px;
-}`
+   ul{
+      width: 100%;
+      list-style: none;
 
-export const Ul = styled.ul`
-   display: flex;
-   flex-direction: column;
-   width: 400px;   
-   list-style: none;
-   margin-top: 10px;
-   margin-left: 36%;
+      li{
+         width: 100%;
+         padding:10px 15px 10px 15px;
+         border: 1px dashed violet;
+         cursor: pointer;
+         background-color: #fff;
+         color: #000;
 
-li{
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   margin-top: 5px;
-   height: 30px;
-   background-color: red;
-}
-`
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
 
-export const Rodape = styled.footer`
-display:flex;
-align-items: center;
-justify-content: center;
-width: 100%;
-height: 60px;
-background-color: #fff;
-margin-top: 90px;
-
-p{
-   color: violet;
+         i :hover {
+            color: green;
+         }
+      }
+   }
 }
 
 `
-export const LoginForm = styled.form`
-display:flex;
-align-items: center;
-width: 100%;
-height: 20%;
-`
+

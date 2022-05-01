@@ -1,3 +1,0 @@
-.color-trash{
-    color:red
-}

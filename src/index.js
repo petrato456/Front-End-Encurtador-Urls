@@ -2,24 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import GlobalStyle from './styles/global';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import './index.css';
-import Home from './pages/home';
 import App from './pages/Url/App';
-import Redirecao from './pages/redirecao';
-import Cadastro from './pages/cadastro'
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path='/redirecao' exact component={Redirecao}/>
-        <Route path="/cadastro" exact component={Cadastro} />
-        <Route path='/url' exact component={App} />
+        <Route path="/" exact component={App} />
       </Switch>
     </BrowserRouter>
 
+    <ToastContainer />
     <GlobalStyle/>
   </React.StrictMode>,
   document.getElementById('root')
